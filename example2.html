@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Fenêtre modifiant la taille et la position</title>
+
+</head><body>
+<form name="form1" action="">
+<input name="Modifier" type="button" id="Modifier"
+onClick='tailleposition();' value="Modifier">
+</form>
+
+<script>
+    function tailleposition(){
+    var myWindow = window.open("tot", "myWindow", "width=200, height=100");
+    for(i=0;i<200;i++){
+    h=4;
+    z=4;
+    myWindow.moveBy(h, z);
+    myWindow.resizeBy(h, z);
+    }
+    }
+</script>
+</body>
+</html>

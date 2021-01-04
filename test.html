@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <Button onclick="world()"> Hello World</Button>
+    <Button onclick="verifName()"> verivier name</Button>
+    <script>
+        function world() {
+            alert("Hello World");
+        }
+
+        function verifName() {
+            var name = prompt("Votre nom s'il vous plait");
+            var name2 = prompt("Confirmer Votre nom s'il vous plait");
+            if (name == name2) {
+                alert(name);
+            }
+        }
+    </script>
+</body>
+
+</html>

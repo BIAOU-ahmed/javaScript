@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="creation()"> button A</button><br>
+    <button onclick="action()"> button B</button>
+    <input type="radio" id="c" name="a" value="C">
+    <label for="c">C</label>
+    <input type="radio" id="d" name="a" value="D">
+    <label for="d">D</label><br>
+    <button onclick="accelerer()"> accelerer</button>
+    <button onclick="fermer()"> fermer</button>
+    <button onclick="demarage()"> demarage</button>
+    <script>
+
+        class train {
+            constructor(speedMax, accele, doorClosed, peopleIn,  itin) {
+                this.name;
+                this.speedMax = speedMax;
+                this.accele=accele;
+                this.speed = 0;
+                this.trainStop = true;
+                this.doorClosed = doorClosed;
+                this.aceleration;
+                this.deceleration;
+                this.peopleIn = peopleIn;
+                this.itin = itin;
+
+                toString();
+            }
+
+
+            accelere(speed) {
+                this.speed += this.accele * speed;
+                if (this.speed > this.speedMax) {
+                    this.speed = this.speedMax;
+                }
+                this.trainStop = false;
+                this.toString();
+            }
+
+            freine(speed) {
+                this.speed -= this.accele*speed;
+                if (this.speed <= 0) {
+                    this.speed = 0;
+                    this.trainStop = true;
+                }
+                this.toString();
+            }
+            depart() {
+                this.fermer();
+                this.demarage();
+                var nb = 1;
+                this.deceleration = setInterval(this.acelerer(nb), 1000);
+                nb++;
+                if (this.speed == 150) {
+                    console.log("err")
+                    clearInterval(this.aceleration);
+                    this.arriver();
+                }
+            }
+
+            arriver() {
+                var nb = 1;
+                this.aceleration = setInterval(this.decelerer(nb), 1000);
+                nb++;
+                if (this.speed == 0) {
+                    clearInterval(this.deceleration);
+
+                }
+            }
+
+            fermePortes() {
+                this.doorClosed = true;
+                console.log("fermerture reussi");
+            }
+
+            ouvrePortes(){
+                this.doorClosed = false;
+                console.log("ouverture reussi");
+            }
+            demarage() {
+                this.trainStop = false;
+                console.log("demarage reussi");
+            }
+            monteesDescentes(monte,decente){
+                this.peopleIn -=decente;
+                this.peopleIn +=monte;
+                console.log(monte+" personne sont monté et "+decente+" personne sont decendu il y a maintenant "+this.peopleIn+" personne dans le train")
+            }
+            quitterGare(){
+                this.trainStop = false;
+                console.log("le train quite la gare");
+            }
+
+            arriveeEnGare(){
+                this.trainStop = true;
+                console.log("le train arrive en gare");
+            }
+            toString() {
+                var door;
+                var etatTrain;
+
+                door = "ouvert";
+                if (this.doorClosed == true) {
+                    door = "fermer";
+                }
+                etatTrain = "en mouvement";
+                if (this.trainStop == true) {
+                    etatTrain = "à l'arret";
+                }
+                console.log("La vitesse actuele est de " + this.speed + " et la porte est " + door + " et le train est " + etatTrain)
+            }
+
+        }
+        var train1 = new train();
+        function accelere() {
+            if (train1.doorClosed == false) {
+                alert("veuillez d'abord fermer les porte");
+            }
+
+            else if (train1.trainStop == true) {
+                alert("veuillez d'abord demarer le train");
+            } else {
+                train1.acelerer(1);
+            }
+
+            //train1.toString();
+        }
+
+        function fermer() {
+            train1.fermer();
+        }
+
+        function demarage() {
+            train1.demarage();
+        }
+
+        var train2 = null;
+        var train3 = null;
+
+        function creation() {
+            train2 = new train();
+            train3 = new train();
+        }
+
+        function action() {
+
+            if (document.getElementById('c').checked) {
+                alert("donner le nom des trains, svp");
+                train2.nom = prompt("le nom du premier train");
+                train3.nom = prompt("le nom du second train");
+            } else if (document.getElementById('d').checked) {
+                var itin = ["X", "Y", "Z"]
+
+                ThomasTheTankEngine = new train(150, 10, false, 0, itin)
+
+                console.log(ThomasTheTankEngine)
+                console.log("Le train en provenance de" + itin[0] + "a destination de " + itin[itin.length - 1] + "va bientot partir");
+
+                ThomasTheTankEngine.ouvrePortes();
+
+                ThomasTheTankEngine.monteesDescentes(125, 0);
+
+                ThomasTheTankEngine.fermePortes();
+
+                ThomasTheTankEngine.quitterGare();
+
+                ThomasTheTankEngine.accelere(15);
+
+                console.log("Une vache sauvage apparait, vite, il faut freiner");
+
+                ThomasTheTankEngine.freine(15);
+
+                console.log("La vache a peur, elle se part");
+
+                ThomasTheTankEngine.accelere(15);
+
+                ThomasTheTankEngine.freine(0);
+
+                ThomasTheTankEngine.freine(2);
+
+                ThomasTheTankEngine.freine(3);
+
+                ThomasTheTankEngine.freine(2);
+
+                ThomasTheTankEngine.freine(2);
+
+                ThomasTheTankEngine.freine(3);
+
+                ThomasTheTankEngine.freine(2.5);
+
+                ThomasTheTankEngine.freine(0.5);
+
+                ThomasTheTankEngine.arriveeEnGare();
+
+                ThomasTheTankEngine.ouvrePortes();
+
+                ThomasTheTankEngine.monteesDescentes(100, 95);
+
+                ThomasTheTankEngine.fermePortes();
+            }
+        }
+    </script>
+</body>
+
+</html>

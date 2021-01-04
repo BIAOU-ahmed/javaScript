@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Html</title>
+    <meta charset=utf-8>
+    <style type="text/css">
+        div {
+            border: 1px solid black;
+            font-size: 16px;
+            font-weight: bold;
+            width: 250px;
+            padding-left: 3px;
+        }
+    </style>
+    <script type="text/javascript">
+        function get_item() {
+            document.getElementById("f1").innerHTML = sessionStorage.getItem("nom")
+            document.getElementById("f2").innerHTML = sessionStorage.getItem("prenom")
+            document.getElementById("f3").innerHTML = sessionStorage.getItem("adresse")
+            document.getElementById("f4").innerHTML = sessionStorage.getItem("cp")
+            document.getElementById("f5").innerHTML = sessionStorage.getItem("ville")
+            document.getElementById("f6").innerHTML = sessionStorage.getItem("pays")
+        }
+    </script>
+</head>
+
+<body onload="get_item()">
+    <h1>Page 2</h1>
+    <form>
+        <p>Votre commande sera envoyée à l’adresse :
+            <p>
+                <div>
+                    <span id="f1"></span>
+                    <span id="f2"></span>
+                    <span id="f3"></span>
+                    <span id="f4"></span>
+                    <span id="f5"></span>
+                    <span id="f6"></span>
+                </div>
+    </form>
+</body>
+
+</html>

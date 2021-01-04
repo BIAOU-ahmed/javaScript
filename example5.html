@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="fr">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>L’objet window - Méthode Close</title>
+<script>
+function popup() {
+f=window.open("http://www.greta-lr.fr/","Greta", width=200,
+height=200,"location=no");
+}
+function fermerf() {
+f.close();
+}
+function fermeractive(){
+self.close();
+}
+</script>
+</head>
+<body>
+<p>
+<input type="button" name="Submit" value="Popup" onClick="popup()" />
+</p>
+<p>
+<input type="button" name="Submit2" value="Fermer fenetre f"
+onClick="fermerf()" />
+</p>
+<p>
+<input type="button" name="Submit3" value="Fermer fenetre active"
+onClick="fermeractive()">
+</p>
+</body>
+</html>

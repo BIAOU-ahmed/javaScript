@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+        #maincontent {
+            width: 500px;
+            height: 300px;
+            border: black 1px solid;
+
+        }
+    </style>
+</head>
+
+<body class="container">
+
+    <div class="row" >
+        <div class="col" id="left">
+            <div id="maincontent"></div>
+            <button>Hello World</button></br>
+            <input type="text" id="text" placeholder="ici du texte"> <button>Custum</button>
+        </div>
+        <div class="col" id="right">
+
+            <button class="col-sm-2  bg-danger">Red</button>
+            <button class="col-sm-2 bg-success">Green</button>
+            <button class="col-sm-2 bg-primary">Blue</button></br>
+            <button class="col-7 mt-2 bg-muted">Toggle</button></br>
+            <button class="col-7 mt-2 bg-warning">Rainbow</button></br>
+            <label> Border </label></br>
+            <input type="range" class="col-5 mt-2" min="0" max="20" step="1">
+
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            var button1 = document.querySelector('#right>:nth-child(1)');
+
+            var button2 = document.querySelector('#right>:nth-child(2)');
+
+            var button3 = document.querySelector('#right>:nth-child(3)');
+            var button4 = document.querySelector('#right>:nth-child(5)');
+            var button5 = document.querySelector('#right>:nth-child(7)');
+
+            var buttonHello = document.querySelector('#left>:nth-child(2)');
+            
+            var buttonCustum = document.querySelector('#left>:nth-child(5)');
+
+            var inputElement = document.querySelector('#right>input');
+
+            var content = document.querySelector('#maincontent');
+            console.log(buttonCustum)
+            button1.addEventListener('click', red);
+            button2.addEventListener('click', green);
+            button3.addEventListener('click', blue);
+            button4.addEventListener('click', changeColor);
+            button5.addEventListener('click', Rainbow);
+            inputElement.addEventListener('change', changeBorder);
+
+            buttonHello.addEventListener('click', addValue);
+            buttonCustum.addEventListener('click', custum);
+            function red() {
+
+                console.log(content);
+
+                content.style.backgroundColor = "red"
+
+            }
+            function green() {
+
+                console.log(content);
+
+                content.style.backgroundColor = "green"
+
+            }
+            function blue() {
+
+                console.log(content);
+
+                content.style.backgroundColor = "blue"
+
+
+            }
+            function changeColor() {
+
+                console.log(content.style.backgroundColor);
+                if (content.style.backgroundColor == "white") {
+                    content.style.backgroundColor = "black"
+                } else {
+                    content.style.backgroundColor = "white"
+                }
+
+            }
+
+            function Rainbow() {
+
+                console.log(content.style.backgroundColor);
+                switch (content.style.backgroundColor) {
+                    case "red":
+                        content.style.backgroundColor = "orange";
+                        break;
+                    case "orange":
+                        content.style.backgroundColor = "yellow";
+                        break;
+                    case "yellow":
+                        content.style.backgroundColor = "green";
+                        break;
+                    case "green":
+                        content.style.backgroundColor = "turquoise";
+                        break;
+                    case "turquoise":
+                        content.style.backgroundColor = "blue";
+                        break;
+                    case "blue":
+                        content.style.backgroundColor = "purple";
+                        break;
+                    case "purple ":
+                        content.style.backgroundColor = "red";
+                        break;
+
+                    default:
+                        content.style.backgroundColor = "red";
+                        break;
+                }
+
+
+            }
+            function changeBorder() {
+
+                console.log(inputElement.value)
+                content.style.border = "black " + inputElement.value + "px solid"
+            }
+
+            function addValue() {
+                var texteDiv = document.createTextNode("Hello World");
+                content.appendChild(texteDiv);
+            }
+            function custum() {
+                var values = document.querySelector("#left>input");
+                var texteDiv = document.createTextNode(values.value);
+                content.appendChild(texteDiv);
+            }
+
+        });
+    </script>
+</body>
+
+</html>

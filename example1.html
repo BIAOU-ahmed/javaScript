@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang="fr">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Objet Window</title>
+<script>
+fenetre=window.open("lesitedugreta.fr","Nouvelle","height=100,width=300,menubar=yes,toolbar=yes,resizable=no,scrollbar=no");
+</script>
+</head>
+<body onUnload="window.fenetre.close()">
+<input type="button" name="Submit" value="Nouvelle"
+onClick="fenetre.focus()">
+<input type="button" name="Submit2" value="Masquer"
+onClick="fenetre.blur()">
+</body>
+</html>

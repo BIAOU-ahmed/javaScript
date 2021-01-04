@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        age();
+
+        function age() {
+            var year = prompt("Votre anne de naissance s'il vous plait");
+            var result;
+            let date1 = new Date();
+
+            if (year <= 2020 && year!=="") {
+                result = date1.getFullYear() - year;
+                alert("Vous avez "+result+" Ans");
+            } else {
+                age();
+            }
+           
+        }
+    </script>
+</body>
+
+</html>

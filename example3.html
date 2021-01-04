@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="fr">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ajout en favoris</title>
+<script>
+navigateur = navigator.appName.substring(0,3);
+version = navigator.appVersion.substring(0,1);
+adresse=window.location;
+titre=window.name;
+function ajoutfavoris() {
+rep=confirm("Voulez-vous ajouter cette page dans vos favoris ?");
+if (rep==false) {
+return;
+}
+else {
+if (navigateur == "Mic" && version >= 4){
+url_site=adresse;
+titre_site = titre;
+window.external.AddFavorite(url_site, titre_site);
+}
+else {
+alert("Utilisez le raccourci-clavier Ctrl+D pour ajouter cette page à vos favoris");
+}
+}
+}
+</script>
+</head>
+<body onLoad="ajoutfavoris()">
+</center>
+</body>
+</html>

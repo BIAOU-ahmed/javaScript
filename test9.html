@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+
+
+
+    <script>
+
+        calcul();
+
+        function calcul() {
+            var operator1 = Number(prompt("Veuillez entrez le premier opérateur."));
+
+            
+            var ask = true;
+            do {
+
+                var operand = prompt("Veuillez entrer l'opérande.");
+                var operator2 = Number(prompt("Veuillez entrer le second opérateur."));
+                var result = 0;
+                var r = confirm("Êtes vous sur de vouloirs valider ce résultat!");
+                if (r == true) {
+                    switch (operand) {
+                        case "+":
+                            result = operator1 + operator2;
+                            break;
+
+                        case "-":
+                            result = operator1 - operator2;
+                            break;
+
+                        case "*":
+                            result = operator1 * operator2;
+                            break;
+
+                        case "/":
+                            result = operator1 / operator2;
+                            break;
+
+                        default:
+                            break;
+                    }
+                    ask = false;
+                } 
+
+            } while (ask);
+
+            alert(result);
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

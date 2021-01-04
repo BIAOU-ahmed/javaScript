@@ -1,0 +1,73 @@
+<html>
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Mon titre</title>
+
+    <script>
+        function showHxContent() {
+            //var content = e.target.querySelector('h1+div');
+            //var target = e.target;
+            //target.style.display ="block";
+            event.target.nextElementSibling.style.display = "unset";
+        }
+        function hideAllDivs() {
+            var content = document.querySelectorAll('div');
+            for (i = 0; i < content.length; i++) {
+                content[i].style.display = "none";
+            }
+        }
+        function alertTitle(){
+            var title = document.querySelector('#title');
+            var content = document.querySelector('h1:nth-of-type('+title.value+')+div>p');
+            //console.log('h1:nth-child('+title.value+')');
+            if(content){
+                alert(content.textContent);
+            }
+            
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <h1 onclick="showHxContent()">Partie 1</h1>
+
+    <div style="display:none">
+
+        <p>Mon premier paragraphe</p>
+
+        <p>Mon second paragraphe</p>
+
+    </div>
+
+    <h1 onclick="showHxContent()">Partie 2</h1>
+
+    <div style="display:none">
+
+        <p>Mon premier paragraphe</p>
+
+        <p>Mon second paragraphe</p>
+
+    </div>
+
+    <p>
+
+        <input type="submit" value="Masquer" onClick="hideAllDivs()" />
+
+    </p>
+
+    <p>
+
+        Titre n°: <input type="text" id="title" />
+
+        <input type="submit" value="Afficher" onClick="alertTitle()" />
+
+    </p>
+
+</body>
+
+</html>

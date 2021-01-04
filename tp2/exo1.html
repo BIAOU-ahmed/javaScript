@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button onclick="ajouName()">Ajouter_nom</button>
+    <button onclick="tirage()">tirage au sort</button>
+
+    <script>
+        var tableName = new Array();
+        function ajouName() {
+            var name = prompt("veuillez entrer un nom");
+            tableName.push(name);
+        }
+
+        function tirage() {
+            var index = Number.parseInt(Math.random()*(tableName.length - 0 + 1) + 0);
+            alert(index);
+            alert(tableName[index]);
+        }
+    </script>
+</body>
+
+</html>

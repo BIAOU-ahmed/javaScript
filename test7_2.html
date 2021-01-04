@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 250px;
+        max-width: 70%;
+        border: thin solid black;
+    }
+
+    tr {
+        border: thin solid black;
+    }
+
+    td {
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+
+    <table id="myTable">
+
+    </table>
+
+
+    <script>
+        var askAgain = true;
+        do {
+            var n = prompt("Entrez un nombre entier")
+
+            if (Number.isInteger(Number(n))) {
+                console.log("toto");
+                var table = document.getElementById("myTable");
+                table.createCaption();
+                table.innerHTML = "<b>Table de Multiplication</b>";
+                var row1 = table.insertRow(0);
+                var cellEntete = row1.insertCell(0);
+                cellEntete.innerHTML = "*";
+
+                for (let index = 0; index < n; index++) {
+                    var cellEntete = row1.insertCell(index+1);
+                    cellEntete.innerHTML = index+1;
+                    var row = table.insertRow(index+1);
+                    var cell = row.insertCell(0);
+                    for (let j = 0; j < n; j++) {
+                        cell.innerHTML = index+1;
+                        var cell1 = row.insertCell(j+1);
+                        cell1.innerHTML = (index+1) * (j + 1);
+                        
+                    }
+                      
+                }
+
+                askAgain = false;
+            }
+        } while (askAgain);
+
+
+    </script>
+</body>
+
+</html>

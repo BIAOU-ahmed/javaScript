@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Html</title>
+    <meta charset=utf-8>
+    <style type="text/css">
+        a {
+            color: black;
+        }
+        
+        form.css fieldset {
+            padding: 1em;
+            width: 290px;
+            border: 1px solid black;
+        }
+        
+        form.css label {
+            display: inline;
+            float: left;
+            width: 90px;
+        }
+        
+        input {
+            margin-bottom: 5px;
+        }
+    </style>
+    <script type="text/javascript">
+        function set_item() {
+            var name = "nom";
+            var data1 = document.getElementById("f1").value;
+            sessionStorage.setItem(name, data1);
+            var prename = "prenom";
+            var data2 = document.getElementById("f2").value;
+            sessionStorage.setItem(prename, data2);
+            var adresse = "adresse";
+            var data3 = document.getElementById("f3").value;
+            sessionStorage.setItem(adresse, data3);
+            var cp = "cp";
+            var data4 = document.getElementById("f4").value;
+            sessionStorage.setItem(cp, data4);
+            var ville = "ville";
+            var data5 = document.getElementById("f5").value;
+            sessionStorage.setItem(ville, data5);
+            var pays = "pays";
+            var data6 = document.getElementById("f6").value;
+            sessionStorage.setItem(pays, data6);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Page 1</h1>
+    <form class="css">
+        <fieldset>
+            <legend>Inscription</legend>
+            <label>Nom : </label>
+            <input id="f1" size="25" required><br>
+            <label>Prénom : </label>
+            <input id="f2" size="25" required><br>
+            <label>Adresse : </label>
+            <input id="f3" size="25" required><br>
+            <label>Code Postal : </label>
+            <input id="f4" size="25" required><br>
+            <label>Ville : </label>
+            <input id="f5" size="25" required><br>
+            <label>Pays : </label>
+            <input id="f6" size="25" required><br>
+        </fieldset>
+    </form>
+    <p><a href="./exo2-1.html" onclick="set_item()">Suite</a> de votre commande.</p>
+</body>
+
+</html>

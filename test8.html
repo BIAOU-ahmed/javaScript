@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+
+
+
+    <script>
+
+        sommeFactoriel(7);
+
+        function factoriel(n) {
+
+            if (Number.isInteger(Number(n))) {
+                var result = 1;
+                while (n > 0) {
+                    result *= n;
+                    n--;
+                }
+                return result;
+
+            }
+        }
+        function sommeFactoriel(n) {
+
+            if (Number.isInteger(Number(n))) {
+                var result = 0;
+                var strResult= "";
+                for (let index = 1; index <= n; index++) {
+
+                    result += factoriel(index);
+                    strResult += index+"!";
+                    if(index<n){
+                        strResult +=  " + ";
+                    }
+                   
+                    
+                }
+                
+                alert(strResult+" = "+result);
+
+            }
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
