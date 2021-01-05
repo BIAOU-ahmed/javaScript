@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var trr = s.querySelector('.status');
             trr.remove()
             mainBody.prepend(parent)
-        }, 3500);
+        }, 2000);
         var title = parent.querySelector('h2');
 
         count++;
