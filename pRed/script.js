@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     var newdata;
+    window.localStorage.clear();
     const ingredient = [
         { "name": "banane", "image": "banane.jpg" },
         { "name": "ananas", "image": "ananas.jpg" },
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         create() {
-            var main = document.querySelector('body');
+            var main = document.querySelector('#main_content');
             var card = document.createElement("div");
             var cardContent = document.createElement("div");
             var rounded = document.createElement("div");
@@ -39,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 card.className += "-rotate-" + x;
             }
-            card.className += "  sm:w-2/3 md:w-2/5 lg:w-3/6 xl:w-1/6 absolute h-1/4 mx-auto transform  flex items-center";
+            card.className += "  sm:w-2/3 md:w-2/5 lg:w-3/6 xl:w-1/6  absolute h-1/4 mx-auto transform  flex items-center";
             cardContent.className = "text-3xl px-1 w-full h-full";
             rounded.className += "max-w-md bg-white grid  overflow-hidden ";
             title.className += "text-center";
@@ -112,16 +113,21 @@ document.addEventListener("DOMContentLoaded", function() {
     //     card.create()
     // });
 
+    var listKeep = [];
 
     var count = 0;
 
     function like(ty) {
 
         var s = event.currentTarget.parentNode.parentNode;
-        var mainBody = document.querySelector('body')
+        var mainBody = document.querySelector('#main_content')
         var parent = s.parentNode.parentNode.parentNode
         var choice = document.createElement("div");
-
+        var title = parent.querySelector('h2').textContent;
+        var link = document.createElement("a");
+        link.innerHTML = " recettes ";
+        link.href = "recettes.html"
+        link.style.textDecoration = "underline";
         var t;
         if (ty == 1) {
 
@@ -133,11 +139,50 @@ document.addEventListener("DOMContentLoaded", function() {
             parent.className += " rotate-left"
             choice.className += "status like"
             t = document.createTextNode("Like");
+            listKeep.push(title);
+            localStorage.setItem("names", JSON.stringify(listKeep));
 
         }
+        console.log(listKeep)
         console.log(parent)
         choice.appendChild(t);
         s.appendChild(choice)
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+                // document.getElementById("demo").innerHTML = myObj.name;
+                var nbOfRecettes = 0;
+                var listrecettes
+                if (listKeep.length > 0) {
+                    myObj.forEach(element => {
+                        listrecettes = [];
+                        console.log(element.ingredient)
+                        var haveAll = true;
+                        listKeep.forEach(ing => {
+                            if (!element.ingredient.includes(ing)) {
+                                haveAll = false;
+                            }
+                        })
+                        if (haveAll) {
+
+                            nbOfRecettes++;
+                        }
+
+                    });
+                }
+                var bottomDiv = document.querySelector('#nextPage')
+                bottomDiv.innerHTML = "Il y a " + nbOfRecettes + " &nbsp;";
+
+                bottomDiv.appendChild(link);
+                bottomDiv.innerHTML += "&nbsp; disponible"
+
+
+            }
+        };
+        xmlhttp.open("GET", "recettes.json", true);
+        xmlhttp.send();
 
         setTimeout(function() {
 
@@ -150,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function() {
             trr.remove()
             mainBody.prepend(parent)
         }, 2000);
-        var title = parent.querySelector('h2');
+
 
         count++;
         // var total = parent.querySelectorAll('div');
