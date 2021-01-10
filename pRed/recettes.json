@@ -1,127 +1,162 @@
 [{
-        "name": "Crêpe choco banane vanille",
-        "image": "crepeauchocolatbanane.jpg",
-        "ingredient": ["chocolat", "vanille", "banane"]
-    },
-    {
         "name": "Gâteau aux fraises",
         "image": "gateauauxfraises.jpg",
-        "ingredient": ["fraises"]
+        "ingredient": ["fraises", "sucre", "oeuf", "farine"]
     },
     {
         "name": "Clafoutis aux cerises",
-        "image": "RDBMS",
-        "ingredient": ["cerise"]
+        "image": "clafoutis_aux_cerises.jpg",
+        "ingredient": ["cerises", "farine", "sucre", "lait"]
     },
     {
         "name": "Gâteau au chocolat",
         "image": "gateauchocolat.jpg",
-        "ingredient": ["chocolat"]
+        "ingredient": ["chocolat", "sucre", "farine", "oeuf"]
     },
     {
-        "name": "Gâteau aux pommes",
+        "name": "Gâteau moelleux aux pommes",
         "image": "gateaupommes.jpg",
-        "ingredient": ["pomme"]
+        "ingredient": ["pomme", "sucre", "farine", "oeuf"]
     },
     {
-        "name": "Tartelette frangipane",
-        "image": "RDBMS",
-        "ingredient": ["abricots", "vanille"]
+        "name": " Tarte coco et abricot ",
+        "image": "tartecocoabricot.jpg",
+        "ingredient": ["abricots", "noix de coco", "oeuf", "sucre"]
+    },
+    {
+        "name": " Confiture de fruits à noyaux",
+        "image": "confiturefruit.jpg",
+        "ingredient": ["abricots", "cerise", "prune", "sucre", "citron"]
+    },
+    {
+        "name": " Clafoutis (poires, abricots ou cerises)",
+        "image": "clafoutisfruit.jpg",
+        "ingredient": ["farine", "oeuf", "cerise", "abricots", "poire"]
     },
     {
         "name": "banana split",
         "image": "banana-split.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["chocolat", "banane", "fraise", "vanille", "sucre"]
     },
     {
         "name": "compote de pommes",
         "image": "comptedepommes.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["pomme"]
     },
     {
-        "name": "creme vanille",
+        "name": "Petits pots de crème à la vanille",
         "image": "cremevanille.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["vanille", "lait", "oeuf", "sucre"]
     },
     {
         "name": "crepe au chocolat",
         "image": "crepeauchocolat.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["chocolat"]
     },
     {
         "name": "crepe au chocolat banane",
         "image": "crepeauchocolatbanane.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["chocolat", "banane", "sucre", "lait", "farine"]
     },
     {
-        "name": "crepechocolatbananevanille.jpg",
+        "name": "crepe chocolat banane vanille",
         "image": "crepechocolatbananevanille.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["chocolat", "vanille", "banane", "sucre", "farine", "lait", "oeuf"]
     },
     {
-        "name": "gateauananasrenverse.jpg",
-        "image": "RDBMS",
-        "ingredient": ["abricots", "vanille"]
+        "name": "gateau ananas renverse",
+        "image": "gateauananasrenverse.jpg",
+        "ingredient": ["ananas"]
     },
     {
         "name": "gateau aux cerises",
         "image": "gateauauxcerises.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["cerises"]
     },
     {
         "name": "gateau aux fraises",
         "image": "gateauauxfraises.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["fraises"]
     },
     {
-        "name": "gateau chocolat",
-        "image": "gateauchocolat.jpg",
-        "ingredient": ["abricots", "vanille"]
-    },
-    {
-        "name": "gateau poires",
+        "name": "Gâteau aux poires",
         "image": "gateaupoires.jpg",
-        "ingredient": ["abricots", "vanille"]
-    },
-    {
-        "name": "gateau pommes",
-        "image": "gateaupommes.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["poire", "sucre", "oeuf", "farine"]
     },
     {
         "name": "glace chocolat",
         "image": "glacechocolat.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["chocolat", "lait", "oeuf", "sucre"]
     },
     {
         "name": "glace vanille",
         "image": "glacevanille.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["vanille", "oeuf", "sucre", "lait"]
     },
     {
         "name": "mousse chocolat",
         "image": "moussechocolat.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["chocolat", "oeuf", "sucre"]
     },
     {
         "name": "mousse fraises",
         "image": "moussefraises.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["fraises", "sucre"]
     },
     {
-        "name": "poireau chocolat",
+        "name": "poire au chocolat",
         "image": "poireauchocolat.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["chocolat", "poire"]
     },
     {
         "name": "salade de fruits fraises cerises",
         "image": "saladedefruitsfraisescerises.jpg",
-        "ingredient": ["abricots", "vanille"]
+        "ingredient": ["fraises", "cerises"]
+    },
+    {
+        "name": "Tarte à la noix de coco",
+        "image": "tartenoixdecoco.jpg",
+        "ingredient": ["noix de coco"]
+    },
+    {
+        "name": "Muffins chocolat noix de coco très légers",
+        "image": "muffinnoixdecoco.jpg",
+        "ingredient": ["chocolat", "noix de coco", "sucre", "oeuf", "vanille", "farine"]
+    },
+    {
+        "name": "Tarte myrtille fraise",
+        "image": "tartemyrtille.png",
+        "ingredient": ["fraise", "myrtille", "kiwi", "framboise", "oeuf", "sucre", "farine", "lait"]
+    },
+    {
+        "name": "Gateau noix de coco",
+        "image": "gateaunoix.jpg",
+        "ingredient": ["noix de coco", "lait", "oeuf"]
+    },
+    {
+        "name": "Beignets aux pommes très facile",
+        "image": "beignet.jpg",
+        "ingredient": ["pomme", "farine", "lait", "oeuf"]
+    },
+    {
+        "name": "Iles flottantes sur ananas caramélisé image non libre",
+        "image": "illeflottantananas.jpg",
+        "ingredient": ["ananas", "sucre", "oeuf"]
+    },
+    {
+        "name": "Muffins aux myrtilles",
+        "image": "muffinsmyrtille.jpg",
+        "ingredient": ["myrtille", "sucre", "oeuf", "lait"]
+    },
+    {
+        "name": "Tarte chocolat-poires facile",
+        "image": "tartepoirechocolat.jpg",
+        "ingredient": ["poire", "chocolat", "sucre", "oeuf", "lait"]
     },
     {
         "name": "salade fraise ananas",
         "image": "saladefraiseananas.jpg",
-        "ingredient": ["poires"]
+        "ingredient": ["fraise", "ananas"]
     }
 
 ]

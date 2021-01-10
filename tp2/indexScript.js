@@ -1,15 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var newdata;
     window.localStorage.clear();
-    const ingredient = [
-        { "name": "banane", "image": "banane.jpg" },
-        { "name": "ananas", "image": "ananas.jpg" },
-        { "name": "pomme", "image": "pomme.jpg" },
-        { "name": "chocolat", "image": "chocolat.jpg" },
-        { "name": "cerise", "image": "cerise.jpg" }
-    ]
-
-
     class Cards {
         constructor(ingredient, image) {
             this.ingredient = ingredient;
@@ -49,8 +39,8 @@ document.addEventListener("DOMContentLoaded", function() {
             buttons.className += "flex justify-between";
             firtButtons.className += "bg-red-600 rounded-full h-24 w-24 flex-col flex items-center text-xl justify-center";
             secondButtons.className += "bg-green-600 rounded-full h-24 w-24 flex-col flex items-center text-xl justify-center";
-            secondButtons.id = "l"
-            firtButtons.id = "r"
+            secondButtons.id = "right"
+            firtButtons.id = "left"
             like.className = "fas fa-times text-3xl";
             dislike.className = "fas fa-check text-3xl";
             var likeText = document.createTextNode("Sweep");
@@ -79,75 +69,40 @@ document.addEventListener("DOMContentLoaded", function() {
 
     }
 
-    // readTextFile("./ingredient.json", function(text) {
-    //     var data = JSON.parse(text);
-    //     data.forEach(element => {
-    //         var card = new Cards(element.name, element.image)
-    //         card.create()
-    //     });
-    //     console.log(data);
-    // });
-
-    // var xmlhttp = new XMLHttpRequest();
-    // var url = "./ingredient.json";
-
-    // xmlhttp.onreadystatechange = function() {
-    //     if (this.readyState == 4 && this.status == 200) {
-    //         var myArr = JSON.parse(this.responseText);
-    //         myFunction(myArr);
-    //     }
-    // };
-    // xmlhttp.open("GET", url, true);
-    // xmlhttp.send();
-    // var news;
-
-    // function myFunction(arr) {
-    //     console.log(arr)
-    //     news = arr;
-
-
-    // }
-
-    // ingredient.forEach(element => {
-    //     var card = new Cards(element.name, element.image)
-    //     card.create()
-    // });
 
     var listKeep = [];
 
     var count = 0;
 
-    function like(ty) {
+    function like(type) {
 
-        var s = event.currentTarget.parentNode.parentNode;
+        var supperParent = event.currentTarget.parentNode.parentNode;
         var mainBody = document.querySelector('#main_content')
         var parent = s.parentNode.parentNode.parentNode
         var choice = document.createElement("div");
         var title = parent.querySelector('h2').textContent;
         var link = document.createElement("a");
-
-        var t;
-        if (ty == 1) {
+        link.innerHTML = " recettes ";
+        link.href = "recettes.html"
+        link.style.textDecoration = "underline";
+        var text;
+        if (type == 1) {
 
             parent.className += " rotate-right"
 
             choice.className += "status dislike"
-            t = document.createTextNode("Dislike");
+            text = document.createTextNode("Dislike");
         } else {
             parent.className += " rotate-left"
             choice.className += "status like"
-            t = document.createTextNode("Like");
+            text = document.createTextNode("Like");
             listKeep.push(title);
             localStorage.setItem("names", JSON.stringify(listKeep));
 
         }
 
-        link.innerHTML = " recette ";
-        link.href = "recettes.html"
-        link.style.textDecoration = "underline";
-
-        choice.appendChild(t);
-        s.appendChild(choice)
+        choice.appendChild(text);
+        supperParent.appendChild(choice)
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -155,44 +110,33 @@ document.addEventListener("DOMContentLoaded", function() {
                 var myObj = JSON.parse(this.responseText);
                 // document.getElementById("demo").innerHTML = myObj.name;
                 var nbOfRecettes = 0;
-                var nbOfPossibleRecettes = 0;
                 var listrecettes
                 if (listKeep.length > 0) {
                     myObj.forEach(element => {
                         listrecettes = [];
                         console.log(element.ingredient)
                         var haveAll = true;
-                        var haveOne = false;
                         listKeep.forEach(ing => {
                             if (!element.ingredient.includes(ing)) {
                                 haveAll = false;
-
-                            } else {
-                                haveOne = true;
                             }
                         })
                         if (haveAll) {
 
                             nbOfRecettes++;
-                        } else if (haveOne == true) {
-                            nbOfPossibleRecettes++;
                         }
 
                     });
                 }
                 var bottomDiv = document.querySelector('#nextPage')
                 bottomDiv.innerHTML = "Il y a " + nbOfRecettes + " &nbsp;";
-                if (nbOfRecettes > 1) {
-                    link.innerHTML = " recettes ";
-                }
+
                 bottomDiv.appendChild(link);
                 bottomDiv.innerHTML += "&nbsp; disponible";
                 if (listKeep.length == 0) {
                     bottomDiv.innerHTML = "Aucun ingredient n'a été choisi pour l'instant";
-                } else if (nbOfRecettes == 0) {
-                    bottomDiv.innerHTML = "Aucun recettes ne corespont à vos choix";
                 }
-                bottomDiv.innerHTML += " " + nbOfPossibleRecettes + " possible"
+
 
             }
         };
@@ -213,19 +157,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         count++;
-        // var total = parent.querySelectorAll('div');
-        // if (count == total.length) {
-        //     alert("fini");
-        //     count = 0;
-        //     read();
 
-        //     // console.log("data")
-        //     console.log("ee " + data)
-        // }
     }
 
 
-
+    // this part allow to open the ingredient JSON file and create the card according to the information in the JSON files
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -241,74 +177,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 card.create()
             });
 
-            var test = document.querySelectorAll('#r');
-
+            //this get all the button which have "left" like id and add the ivent listener
+            var test = document.querySelectorAll('#left');
             test.forEach(element => {
-                element.addEventListener('click', function() { like(1); });
+                element.addEventListener('click', function() { like(2); });
             });
 
-
-            var test1 = document.querySelectorAll('#l');
+            //this get all the button which have "right" like id and add the ivent listener
+            var test1 = document.querySelectorAll('#right');
 
             test1.forEach(element => {
-                element.addEventListener('click', function() { like(2); });
+                element.addEventListener('click', function() { like(1); });
             });
         }
     };
     xmlhttp.open("GET", "ingredient.json", true);
     xmlhttp.send();
 
-
-    // read()
-    // var oXHR
-
-    // function read() {
-    //     oXHR = new XMLHttpRequest();
-
-    //     // Initiate request.
-    //     //oXHR.onreadystatechange = reportStatus;
-
-    //     if (oXHR.readyState == 4) { // Check if request is complete.
-
-    //         data = JSON.parse(this.responseText);
-    //         console.log(data)
-    //     }
-    //     oXHR.open("GET", "./data.json", true); // get json file.
-    //     oXHR.send();
-
-    // }
-
-
-    // function reportStatus() {
-    //     if (oXHR.readyState == 4) { // Check if request is complete.
-
-    //         data = JSON.parse(this.responseText);
-
-    //     }
-    //     // console.log(data)
-    //     // return data
-    // }
-
-    //return data;
-
-
-    // function readTextFile(file, callback) {
-    //     var rawFile = new XMLHttpRequest();
-    //     rawFile.overrideMimeType("application/json");
-    //     rawFile.open("GET", file, true);
-    //     rawFile.onreadystatechange = function() {
-    //         if (rawFile.readyState === 4 && rawFile.status == "200") {
-    //             callback(rawFile.responseText);
-    //             console.log(rawFile.responseText)
-    //         }
-    //     }
-    //     rawFile.send(null);
-    // }
-    // var d;
-    // readTextFile("./data.json", function(text) {
-    //     var data = JSON.parse(text);
-    //     d = data;
-    //     console.log(data);
-    // });
-    // console.log(d)
 });

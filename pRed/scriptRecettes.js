@@ -1,21 +1,22 @@
 document.addEventListener("DOMContentLoaded", function() {
     var j = JSON.parse(window.localStorage.getItem("names"))
-    console.log(j)
+        // console.log(j)
 
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText);
             // document.getElementById("demo").innerHTML = myObj.name;
-
+            // alert(myObj.length)
             myObj.forEach(element => {
 
-                console.log(element.ingredient)
+                // console.log(element.ingredient)
                 var haveAll = true;
                 j.forEach(ing => {
                     if (!element.ingredient.includes(ing)) {
 
                         haveAll = false;
+
                     }
                 })
                 if (haveAll) {
@@ -51,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var TitleCard = document.createElement("div");
             var title = document.createElement("h3");
 
-            mainContent.className = " h-2/4  flex items-center transform transition duration-500 hover:scale-105";
+            mainContent.className = " flex items-center transform transition duration-500 hover:scale-105";
             content.className = "text-3xl px-1 w-full h-full";
             card.className = "max-w-md bg-white grid  overflow-hidden ";
             cardImage.className = "w-5/6 h-64 mt-3 justify-self-center border-2 border-black"
