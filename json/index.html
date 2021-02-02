@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>mon tableau de bord</title>
+    <link rel="stylesheet" href="css/tui-grid.css">
+    <script src="js/tui-grid.js"></script>
+
+</head>
+
+<body>
+    <div id="grid"></div>
+    <script>
+        const colonne = [
+
+            {
+
+                header: 'Nom du cheval',
+
+                name: 'nom'
+
+            },
+
+            {
+
+                header: 'Age',
+
+                name: 'age'
+
+            },
+
+            {
+
+                header: 'Ecuyer',
+
+                name: 'ecuyer'
+
+            },
+
+            {
+
+                header: 'Courses remportées',
+
+                name: 'courses'
+
+            }
+
+        ];
+
+
+        const gridData = {
+            "nomHaras": "Emma",
+            "ville": "Montpellier",
+            "dateCreation": 2016,
+            "surface": "85h",
+            "active": true,
+            "chevaux": [{
+                "nom": "Pitou",
+                "age": 4,
+                "ecuyer": "Hatem Reborn",
+                "courses": [
+                    "Grand prix de Paris",
+                    "Turfing Motion",
+                    "Rambouillet"
+                ]
+            }, {
+                "nom": "Diana",
+                "age": 7,
+                "ecuyer": "Maxime Terrible",
+                "courses": [
+                    "Mille Fleurs",
+                    "Sprint in Desert",
+                    "Arc de Triomphe",
+                    "Abudhabi"
+                ]
+            }, {
+                "nom": "Général du Pommeau",
+                "age": 5,
+                "ecuyer": "Atif Abdel",
+                "courses": [
+                    "Vincennes",
+                    "Longchamp",
+                    "Deauville",
+                    "Maisons-Lafitte",
+                    "Saint Cloud",
+                    "Auteuil"
+                ]
+            }]
+        }
+
+        const e = [
+
+            {
+                "nomHaras": "Emma",
+                "chevaux": [{
+
+                        "nom": "Pitou",
+
+                        "age": 4,
+
+                        "ecuyer": "Hatem Reborn",
+
+                        "courses": "Grand prix de Paris"
+                    },
+
+                    {
+
+                        "nom": "Diana",
+
+                        "age": 7,
+
+                        "ecuyer": "Maxime Terrible",
+
+                        "courses": "Mille Fleurs"
+                    },
+
+                    {
+
+                        "nom": "Général du Pommeau",
+
+                        "age": 5,
+
+                        "ecuyer": "Atif Abdel",
+
+                        "courses": "Auteuil"
+                    }
+
+                ]
+            }
+
+        ];
+
+        const grid = new tui.Grid({
+
+            el: document.getElementById('grid'),
+
+            data: gridData.chevaux,
+
+            header: {
+
+                height: 120,
+
+                complexColumns: [
+
+                    {
+
+                        header: 'Haras',
+
+                        name: 'identite',
+
+                        childNames: ['nom', 'age', 'ecuyer', 'courses']
+
+                    }
+
+                ]
+
+            },
+
+            scrollX: false,
+
+            scrollY: false,
+
+            columns: colonne
+
+        });
+
+        tui.Grid.applyTheme("striped");
+
+        /*
+             const colonne = [{
+                 header: 'Nom du haras',
+                 name: 'nomHaras'
+             }, {
+                 header: 'Ville',
+                 name: 'ville'
+             }, {
+                 header: 'En activité',
+                 name: 'active'
+             }, {
+                 header: 'Date de création',
+                 name: 'dateCreation'
+             }, {
+                 header: 'Surface',
+                 name: 'surface'
+             }];
+
+             const gridData = [{
+                 "nomHaras": "Emma",
+                 "ville": "Montpellier",
+                 "dateCreation": "2016",
+                 "surface": "85h",
+                 "active": "true"
+             }, {
+                 "nomHaras": "Copeland",
+                 "ville": "Oppido Mamertina",
+                 "dateCreation": "2009",
+                 "surface": 231,
+                 "active": false
+             }, {
+                 "nomHaras": "Mercer",
+                 "ville": "Caerphilly",
+                 "dateCreation": "1979",
+                 "surface": 65,
+                 "active": false
+             }, {
+                 "nomHaras": "Atkins",
+                 "ville": "Nocera Umbra",
+                 "dateCreation": "1969",
+                 "surface": 109,
+                 "active": true
+             }, {
+                 "nomHaras": "Blackwell",
+                 "ville": "Rattray",
+                 "dateCreation": "1979",
+                 "surface": 74,
+                 "active": false
+             }, {
+                 "nomHaras": "Jarvis",
+                 "ville": "Essex",
+                 "dateCreation": "1986",
+                 "surface": 183,
+                 "active": false
+             }, {
+                 "nomHaras": "Tate",
+                 "ville": "Kelowna",
+                 "dateCreation": "2011",
+                 "surface": 178,
+                 "active": true
+             }, {
+                 "nomHaras": "Jarvis",
+                 "ville": "Lutsel K'e",
+                 "dateCreation": "2001",
+                 "surface": 120,
+                 "active": false
+             }, {
+                 "nomHaras": "Crane",
+                 "ville": "Istres",
+                 "dateCreation": "1996",
+                 "surface": 159,
+                 "active": true
+             }, {
+                 "nomHaras": "Parsons",
+                 "ville": "Uyo",
+                 "dateCreation": "1968",
+                 "surface": 226,
+                 "active": true
+             }, {
+                 "nomHaras": "Kidd",
+                 "ville": "Laja",
+                 "dateCreation": "1965",
+                 "surface": 48,
+                 "active": false
+             }, {
+                 "nomHaras": "Velazquez",
+                 "ville": "Akhisar",
+                 "dateCreation": "1996",
+                 "surface": 173,
+                 "active": true
+             }, {
+                 "nomHaras": "West",
+                 "ville": "Pınarbaşı",
+                 "dateCreation": "2012",
+                 "surface": 98,
+                 "active": false
+             }, {
+                 "nomHaras": "Morris",
+                 "ville": "Richmond Hill",
+                 "dateCreation": "1991",
+                 "surface": 142,
+                 "active": true
+             }, {
+                 "nomHaras": "Wise",
+                 "ville": "King Township",
+                 "dateCreation": "2018",
+                 "surface": 140,
+                 "active": true
+             }, {
+                 "nomHaras": "Simpson",
+                 "ville": "Swansea",
+                 "dateCreation": "1966",
+                 "surface": 64,
+                 "active": true
+             }, {
+                 "nomHaras": "Stevenson",
+                 "ville": "Worcester",
+                 "dateCreation": "1965",
+                 "surface": 166,
+                 "active": true
+             }, {
+                 "nomHaras": "Caldwell",
+                 "ville": "Leganés",
+                 "dateCreation": "1992",
+                 "surface": 114,
+                 "active": false
+             }, {
+                 "nomHaras": "Fields",
+                 "ville": "Lamorteau",
+                 "dateCreation": "2009",
+                 "surface": 26,
+                 "active": true
+             }, {
+                 "nomHaras": "Gray",
+                 "ville": "Kapolei",
+                 "dateCreation": "2004",
+                 "surface": 197,
+                 "active": true
+             }, {
+                 "nomHaras": "Patel",
+                 "ville": "Busan",
+                 "dateCreation": "1991",
+                 "surface": 64,
+                 "active": false
+             }, {
+                 "nomHaras": "Nguyen",
+                 "ville": "Puno",
+                 "dateCreation": "1977",
+                 "surface": 58,
+                 "active": true
+             }, {
+                 "nomHaras": "Melendez",
+                 "ville": "Pochep",
+                 "dateCreation": "1996",
+                 "surface": 78,
+                 "active": true
+             }, {
+                 "nomHaras": "Larson",
+                 "ville": "Guadalupe",
+                 "dateCreation": "1986",
+                 "surface": 127,
+                 "active": true
+             }, {
+                 "nomHaras": "Randolph",
+                 "ville": "Yorkton",
+                 "dateCreation": "1969",
+                 "surface": 175,
+                 "active": true
+             }];
+
+             const grid = new tui.Grid({
+                 el: document.getElementById('grid'),
+                 data: gridData,
+                 scrollX: false,
+                 scrollY: false,
+                 columns: colonne
+
+             });
+             tui.Grid.applyTheme("striped");*/
+    </script>
+</body>
+
+</html>
