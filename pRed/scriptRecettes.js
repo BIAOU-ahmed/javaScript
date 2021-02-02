@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
     var j = JSON.parse(window.localStorage.getItem("names"))
         // console.log(j)
+    var title = document.querySelector('#second_content_title');
+    var mainTitle = document.querySelector('#main_content_title');
+    var mainContainer = document.querySelector('#main_content');
+    var secondContainer = document.querySelector('#second_content');
 
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -12,18 +16,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 // console.log(element.ingredient)
                 var haveAll = true;
+                var haveOne = false;
                 j.forEach(ing => {
                     if (!element.ingredient.includes(ing)) {
 
                         haveAll = false;
 
+                    } else {
+                        haveOne = true;
                     }
                 })
                 if (haveAll) {
                     // alert(element.name);
+                    mainTitle.innerHTML = "Vos recettes"
                     var recipes = new Recipes(element.name, element.image)
-                    recipes.create()
+                    recipes.create(mainContainer)
 
+                } else if (haveOne == true) {
+                    title.innerHTML = "Recettes qui pourrais coresponde"
+                    var recipes = new Recipes(element.name, element.image)
+                    recipes.create(secondContainer)
                 }
 
             });
@@ -42,8 +54,8 @@ document.addEventListener("DOMContentLoaded", function() {
             this.image = image;
         }
 
-        create() {
-            var main = document.querySelector('#main_content');
+        create(container) {
+            // var main = document.querySelector('#main_content');
             var mainContent = document.createElement("div");
             var content = document.createElement("div");
             var card = document.createElement("div");
@@ -52,10 +64,10 @@ document.addEventListener("DOMContentLoaded", function() {
             var TitleCard = document.createElement("div");
             var title = document.createElement("h3");
 
-            mainContent.className = " flex items-center transform transition duration-500 hover:scale-105";
+            mainContent.className = "sm:w-1/10 md:w-full lg:w-full xl:w-full flex items-center transform transition duration-500 hover:scale-105";
             content.className = "text-3xl px-1 w-full h-full";
             card.className = "max-w-md bg-white grid  overflow-hidden ";
-            cardImage.className = "w-5/6 h-64 mt-3 justify-self-center border-2 border-black"
+            cardImage.className = "w-5/6 h-64 mt-3 justify-self-center border-2 border-black transform transition duration-500 hover:scale-105"
 
             cardBody.className = "px-6 py-4";
             TitleCard.className = "flex justify-between";
@@ -69,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
             card.appendChild(cardBody);
             content.appendChild(card);
             mainContent.appendChild(content)
-            main.appendChild(mainContent);
+            container.appendChild(mainContent);
 
         }
     }

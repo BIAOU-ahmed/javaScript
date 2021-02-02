@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 card.className += "-rotate-" + x;
             }
-            card.className += " sm:w-1/10 md:w-2/5 lg:w-2/6 xl:w-1/6  absolute h-1/4 mx-auto transform  flex items-center";
+            card.className += " sm:w-1/10 md:w-2/5 lg:w-2/6 xl:w-1/5  absolute h-1/4 mx-auto transform  flex items-center";
             cardContent.className = "text-3xl px-1 w-full h-full";
             rounded.className += "max-w-md bg-white grid  overflow-hidden ";
             title.className += "text-center";
@@ -181,18 +181,28 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
                 }
                 var bottomDiv = document.querySelector('#nextPage')
-                bottomDiv.innerHTML = "Il y a " + nbOfRecettes + " &nbsp;";
-                if (nbOfRecettes > 1) {
-                    link.innerHTML = " recettes ";
-                }
-                bottomDiv.appendChild(link);
-                bottomDiv.innerHTML += "&nbsp; disponible";
-                if (listKeep.length == 0) {
-                    bottomDiv.innerHTML = "Aucun ingredient n'a été choisi pour l'instant";
-                } else if (nbOfRecettes == 0) {
-                    bottomDiv.innerHTML = "Aucun recettes ne corespont à vos choix";
-                }
-                bottomDiv.innerHTML += " " + nbOfPossibleRecettes + " possible"
+                bottomDiv.innerHTML = '<a class="inline-flex items-center h-10 px-4 m-2 text-lg text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" href="./recettes.html">Liste de recettes</a>';
+                // if (nbOfRecettes > 1) {
+                //     link.innerHTML = " recettes ";
+                // }
+                // bottomDiv.appendChild(link);
+                // bottomDiv.innerHTML += "&nbsp; correspondant à vos choix ont été trouvé.";
+                // if (listKeep.length == 0) {
+                //     bottomDiv.innerHTML = "Aucun ingredient n'a été choisi pour l'instant";
+                // } else if (nbOfRecettes == 0) {
+                //     bottomDiv.innerHTML = "Pas de recettes correspondant, mais  </br>";
+                // }
+
+                // if (nbOfPossibleRecettes != 0) {
+                //     bottomDiv.innerHTML += nbOfPossibleRecettes + " autres &nbsp;";
+                //     bottomDiv.appendChild(link);
+                //     bottomDiv.innerHTML += "&nbsp; peuvent vous interesser"
+                // }
+
+                // pas de recettes corecpondant mais nb recettes qui pourrais vous coresponde
+                //ou mais voici nb recettes qui pourrais vous interesser
+                //si autres possibilité egale zeno ne rien mettre 
+                // nb autres recettes qui pourrais vous interessez
 
             }
         };
@@ -213,15 +223,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         count++;
-        // var total = parent.querySelectorAll('div');
-        // if (count == total.length) {
-        //     alert("fini");
-        //     count = 0;
-        //     read();
-
-        //     // console.log("data")
-        //     console.log("ee " + data)
-        // }
+        var total = document.querySelectorAll('#main_content>div');
+        console.log("total " + total.length)
+        if (count == total.length) {
+            alert("fini");
+            count = 0;
+            window.location.href = './recettes.html';
+        }
     }
 
 
@@ -234,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const randomly = () => Math.random() - 0.1;
             const dynamicCard = [].concat(myObj).sort(randomly);
-
+            console.log("nb ing " + myObj.length)
             myObj.forEach((element, index) => {
 
                 var card = new Cards(dynamicCard[index].name, dynamicCard[index].image)
